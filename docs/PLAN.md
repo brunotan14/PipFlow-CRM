@@ -84,15 +84,15 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Branch:** `feat/app-shell`
 **Objetivo:** Layout autenticado completo com sidebar, header e navegação — sem dados reais, tudo estático.
 
-- [ ] Criar layout base `app/(app)/layout.tsx`
-- [ ] Criar componente `Sidebar` com links de navegação (Dashboard, Leads, Pipeline, Settings)
-- [ ] Adicionar dropdown de workspace na sidebar (estático, com dados mockados)
-- [ ] Adicionar avatar do usuário + menu de conta na sidebar
-- [ ] Criar `Header` com título da página e slot para ações
-- [ ] Criar páginas vazias (placeholder) para `/dashboard`, `/leads`, `/pipeline`, `/settings`
-- [ ] Aplicar paleta de cores: indigo-600 primário, slate-50 sidebar, branco superfície
-- [ ] Garantir responsividade básica (sidebar colapsável em mobile)
-- [ ] Criar `app/(auth)/layout.tsx` com layout centralizado para telas de auth
+- [x] Criar layout base `app/(app)/layout.tsx`
+- [x] Criar componente `Sidebar` com links de navegação (Dashboard, Leads, Pipeline, Settings)
+- [x] Adicionar dropdown de workspace na sidebar (estático, com dados mockados)
+- [x] Adicionar avatar do usuário + menu de conta na sidebar
+- [x] Criar `Header` com título da página e slot para ações
+- [x] Criar páginas vazias (placeholder) para `/dashboard`, `/leads`, `/pipeline`, `/settings`
+- [x] Aplicar paleta de cores: indigo-600 primário, zinc-950 sidebar, zinc-900 superfície
+- [x] Garantir responsividade básica (sidebar colapsável em mobile via Sheet/drawer)
+- [x] Criar `app/(auth)/layout.tsx` com layout centralizado para telas de auth
 
 **Commit final:** `feat: app shell with sidebar, navigation and base layout`
 
