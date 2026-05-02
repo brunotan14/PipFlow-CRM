@@ -11,6 +11,14 @@ const PUBLIC_PATHS = [
 ];
 
 export async function middleware(request: NextRequest) {
+  // Skip auth checks when Supabase is not yet configured (e.g. local dev without .env.local)
+  if (
+    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  ) {
+    return NextResponse.next({ request });
+  }
+
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(

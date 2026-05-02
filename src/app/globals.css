@@ -1,45 +1,62 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --color-background: oklch(14.5% 0.005 285);   /* zinc-950 */
+  --color-foreground: oklch(98.5% 0 0);          /* zinc-50  */
+
+  /* ── Card / Popover ──────────────────────────────────────── */
+  --color-card:                oklch(21% 0.006 285);  /* zinc-900 */
+  --color-card-foreground:     oklch(98.5% 0 0);
+  --color-popover:             oklch(21% 0.006 285);
+  --color-popover-foreground:  oklch(98.5% 0 0);
+
+  /* ── Brand ────────────────────────────────────────────────── */
+  --color-primary:             oklch(58% 0.22 264);   /* indigo-500 */
+  --color-primary-foreground:  oklch(98.5% 0 0);
+
+  /* ── Secondary / Muted / Accent ─────────────────────────── */
+  --color-secondary:           oklch(27% 0.006 285);  /* zinc-800 */
+  --color-secondary-foreground:oklch(83% 0.006 285);  /* zinc-300 */
+  --color-muted:               oklch(27% 0.006 285);
+  --color-muted-foreground:    oklch(52% 0.006 285);  /* zinc-500 */
+  --color-accent:              oklch(27% 0.006 285);
+  --color-accent-foreground:   oklch(83% 0.006 285);
+
+  /* ── Destructive ─────────────────────────────────────────── */
+  --color-destructive:         oklch(63% 0.24 29);    /* red-500  */
+  --color-destructive-foreground: oklch(98.5% 0 0);
+
+  /* ── Borders / Input / Ring ──────────────────────────────── */
+  --color-border: oklch(37% 0.006 285);  /* zinc-700 */
+  --color-input:  oklch(27% 0.006 285);  /* zinc-800 */
+  --color-ring:   oklch(58% 0.22 264);   /* indigo-500 */
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  --color-sidebar:                    oklch(14.5% 0.005 285);
+  --color-sidebar-foreground:         oklch(83% 0.006 285);
+  --color-sidebar-primary:            oklch(58% 0.22 264);
+  --color-sidebar-primary-foreground: oklch(98.5% 0 0);
+  --color-sidebar-accent:             oklch(27% 0.006 285);
+  --color-sidebar-accent-foreground:  oklch(83% 0.006 285);
+  --color-sidebar-border:             oklch(37% 0.006 285);
+  --color-sidebar-ring:               oklch(58% 0.22 264);
+
+  /* ── Radius ──────────────────────────────────────────────── */
+  --radius: 0.5rem;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
 
 @layer base {
-  :root {
-    --background: 9 9 11; /* zinc-950 */
-    --foreground: 250 250 250; /* zinc-50 */
-    --card: 24 24 27; /* zinc-900 */
-    --card-foreground: 250 250 250;
-    --popover: 24 24 27;
-    --popover-foreground: 250 250 250;
-    --primary: 99 102 241; /* indigo-500 */
-    --primary-foreground: 250 250 250;
-    --secondary: 39 39 42; /* zinc-800 */
-    --secondary-foreground: 212 212 216; /* zinc-300 */
-    --muted: 39 39 42;
-    --muted-foreground: 113 113 122; /* zinc-500 */
-    --accent: 39 39 42;
-    --accent-foreground: 212 212 216;
-    --destructive: 239 68 68; /* red-500 */
-    --destructive-foreground: 250 250 250;
-    --border: 63 63 70; /* zinc-700 */
-    --input: 39 39 42; /* zinc-800 */
-    --ring: 99 102 241; /* indigo-500 */
-    --radius: 0.5rem;
-    --sidebar: 9 9 11; /* zinc-950 */
-    --sidebar-foreground: 212 212 216;
-    --sidebar-primary: 99 102 241;
-    --sidebar-primary-foreground: 250 250 250;
-    --sidebar-accent: 39 39 42;
-    --sidebar-accent-foreground: 212 212 216;
-    --sidebar-border: 63 63 70;
-    --sidebar-ring: 99 102 241;
-  }
-
   * {
-    @apply border-border;
+    border-color: var(--color-border);
   }
 
   body {
-    @apply bg-zinc-950 text-zinc-50;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
   }
 }
 
