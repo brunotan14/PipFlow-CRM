@@ -104,12 +104,12 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Objetivo:** Fluxo completo de login, registro e recuperação de senha funcionando com Supabase Auth.
 
 **Interface primeiro:**
-- [ ] Criar página `/login` com formulário (e-mail + senha) usando shadcn/ui `Form`
-- [ ] Criar página `/register` com formulário (nome, e-mail, senha)
-- [ ] Criar página `/forgot-password` com formulário de e-mail
+- [x] Criar página `/login` com formulário (e-mail + senha) usando shadcn/ui `Form`
+- [x] Criar página `/register` com formulário (nome, e-mail, senha)
+- [x] Criar página `/forgot-password` com formulário de e-mail
 - [ ] Criar página `/reset-password` para redefinição via link
-- [ ] Adicionar validação client-side com Zod + react-hook-form
-- [ ] Adicionar estados de loading, erro e sucesso nos formulários
+- [x] Adicionar validação client-side com Zod + react-hook-form
+- [x] Adicionar estados de loading, erro e sucesso nos formulários
 
 **Backend:**
 - [ ] Criar Server Actions em `lib/auth/actions.ts` (signIn, signUp, signOut, resetPassword)
@@ -305,11 +305,11 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Branch:** `feat/onboarding`
 **Objetivo:** Fluxo de boas-vindas guiado que leva o usuário a criar workspace e primeiro lead.
 
-- [ ] Criar fluxo `/onboarding` com steps (stepper visual)
-  - Step 1: Nome do workspace
-  - Step 2: Convidar colaboradores (opcional, pulável)
-  - Step 3: Criar primeiro lead (opcional, pulável)
-- [ ] Redirecionar novo usuário para `/onboarding` após registro
+- [x] Criar fluxo `/onboarding` com steps (stepper visual)
+  - [x] Step 1: Nome do workspace
+  - [ ] Step 2: Convidar colaboradores (opcional, pulável)
+  - [ ] Step 3: Criar primeiro lead (opcional, pulável)
+- [x] Redirecionar novo usuário para `/onboarding` após registro
 - [ ] Marcar onboarding como completo em `workspaces.onboarding_done`
 - [ ] Criar checklist de "Primeiros passos" no dashboard (colapsável após completar tudo)
 - [ ] Tooltip de boas-vindas no pipeline vazio com CTA para criar primeiro negócio
