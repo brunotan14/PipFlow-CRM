@@ -63,17 +63,17 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Branch:** `setup/project-foundation`
 **Objetivo:** Projeto rodando localmente com toda a stack configurada e estrutura de pastas no lugar.
 
-- [ ] Inicializar projeto com `create-next-app` (TypeScript, App Router, Tailwind)
-- [ ] Configurar `tsconfig.json` com strict mode
-- [ ] Instalar e inicializar shadcn/ui
-- [ ] Criar estrutura de pastas conforme CLAUDE.md (`app/`, `components/`, `lib/`, `types/`)
-- [ ] Configurar variáveis de ambiente (`.env.local` + `.env.example`)
+- [x] Inicializar projeto com `create-next-app` (TypeScript, App Router, Tailwind)
+- [x] Configurar `tsconfig.json` com strict mode
+- [x] Instalar e inicializar shadcn/ui
+- [x] Criar estrutura de pastas conforme CLAUDE.md (`app/`, `components/`, `lib/`, `types/`)
+- [x] Configurar variáveis de ambiente (`.env.local` + `.env.example`)
 - [ ] Conectar projeto ao Supabase (criar projeto, copiar URL e anon key)
-- [ ] Instalar dependências: `@supabase/ssr`, `@dnd-kit/core`, `recharts`, `resend`, `stripe`, `zod`
-- [ ] Configurar `lib/supabase/client.ts` e `lib/supabase/server.ts`
-- [ ] Configurar `middleware.ts` para proteção de rotas
-- [ ] Configurar ESLint + Prettier
-- [ ] Subir projeto no GitHub
+- [x] Instalar dependências: `@supabase/ssr`, `@dnd-kit/core`, `recharts`, `resend`, `stripe`, `zod`
+- [x] Configurar `lib/supabase/client.ts` e `lib/supabase/server.ts`
+- [x] Configurar `middleware.ts` para proteção de rotas
+- [x] Configurar ESLint + Prettier
+- [x] Subir projeto no GitHub
 
 **Commit final:** `chore: project setup with Next.js 14, Supabase, shadcn/ui and folder structure`
 
