@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "PipeFlow CRM",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark">
       <body className="antialiased bg-zinc-950 text-zinc-50 font-sans">
         {children}
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );

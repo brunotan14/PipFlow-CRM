@@ -1,75 +1,119 @@
-import { Plus, Search, SlidersHorizontal, Users } from "lucide-react";
+"use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState, useMemo } from "react";
+import { toast } from "sonner";
+
+import { LeadsToolbar } from "@/components/leads/leads-toolbar";
+import { LeadTable } from "@/components/leads/lead-table";
+import { LeadForm } from "@/components/leads/lead-form";
+import { type Lead, MOCK_LEADS } from "@/lib/mock/leads";
+import { type LeadStatus } from "@/types/database";
 
 export default function LeadsPage() {
+  const [leads, setLeads] = useState<Lead[]>(MOCK_LEADS);
+  const [search, setSearch] = useState("");
+  const [selectedStatuses, setSelectedStatuses] = useState<LeadStatus[]>([]);
+  const [formOpen, setFormOpen] = useState(false);
+  const [editingLead, setEditingLead] = useState<Lead | null>(null);
+
+  const filtered = useMemo(() => {
+    let result = leads;
+
+    if (search.trim()) {
+      const q = search.toLowerCase();
+      result = result.filter(
+        (l) =>
+          l.name.toLowerCase().includes(q) ||
+          l.company?.toLowerCase().includes(q)
+      );
+    }
+
+    if (selectedStatuses.length > 0) {
+      result = result.filter((l) => selectedStatuses.includes(l.status));
+    }
+
+    return result;
+  }, [leads, search, selectedStatuses]);
+
+  function openNewLead() {
+    setEditingLead(null);
+    setFormOpen(true);
+  }
+
+  function openEditLead(lead: Lead) {
+    setEditingLead(lead);
+    setFormOpen(true);
+  }
+
+  function handleFormSubmit(
+    raw: { name: string; email?: string; phone?: string; company?: string; position?: string; status: Lead["status"] },
+    isEdit: boolean
+  ) {
+    const values = {
+      name: raw.name,
+      email: raw.email ?? null,
+      phone: raw.phone ?? null,
+      company: raw.company ?? null,
+      position: raw.position ?? null,
+      status: raw.status,
+    };
+
+    if (isEdit && editingLead) {
+      setLeads((prev) =>
+        prev.map((l) =>
+          l.id === editingLead.id
+            ? { ...l, ...values, updated_at: new Date().toISOString() }
+            : l
+        )
+      );
+      toast.success("Lead atualizado com sucesso.");
+    } else {
+      const newLead: Lead = {
+        id: `l${Date.now()}`,
+        ...values,
+        owner: { id: "u1", name: "Bruno Nathan", initials: "BN" },
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+      setLeads((prev) => [newLead, ...prev]);
+      toast.success("Lead criado com sucesso.");
+    }
+  }
+
+  function handleDelete(leadId: string) {
+    setLeads((prev) => prev.filter((l) => l.id !== leadId));
+    toast.success("Lead excluído.");
+  }
+
   return (
     <div className="space-y-4">
-      {/* Toolbar */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-1 items-center gap-2">
-          <div className="relative flex-1 max-w-sm">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-500" />
-            <Input
-              placeholder="Buscar leads..."
-              className="border-zinc-700 bg-zinc-800 pl-9 text-zinc-200 placeholder:text-zinc-600 focus-visible:ring-indigo-500"
-              disabled
-            />
-          </div>
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-zinc-700 bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200"
-            disabled
-          >
-            <SlidersHorizontal className="mr-1.5 h-3.5 w-3.5" />
-            Filtros
-          </Button>
-        </div>
-        <Button
-          size="sm"
-          className="bg-indigo-600 text-white hover:bg-indigo-500"
-          disabled
-        >
-          <Plus className="mr-1.5 h-4 w-4" />
-          Novo Lead
-        </Button>
-      </div>
+      <LeadsToolbar
+        search={search}
+        onSearchChange={setSearch}
+        selectedStatuses={selectedStatuses}
+        onStatusChange={setSelectedStatuses}
+        onNewLead={openNewLead}
+        totalFiltered={filtered.length}
+        total={leads.length}
+      />
 
-      {/* Table header */}
-      <div className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900">
-        <div className="grid grid-cols-[1fr_1fr_120px_100px_80px] gap-4 border-b border-zinc-800 px-4 py-3">
-          {["Nome", "Empresa", "Status", "Responsável", ""].map((col) => (
-            <span key={col} className="text-xs font-medium uppercase tracking-wide text-zinc-500">
-              {col}
-            </span>
-          ))}
-        </div>
+      <LeadTable
+        leads={filtered}
+        onEdit={openEditLead}
+        onDelete={handleDelete}
+        onNewLead={openNewLead}
+        isFiltering={search.trim().length > 0 || selectedStatuses.length > 0}
+      />
 
-        {/* Empty state */}
-        <div className="flex flex-col items-center justify-center gap-3 py-20 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800">
-            <Users className="h-5 w-5 text-zinc-500" />
-          </div>
-          <div>
-            <p className="text-sm font-medium text-zinc-300">
-              Nenhum lead ainda
-            </p>
-            <p className="mt-1 text-xs text-zinc-500">
-              Crie seu primeiro lead para começar a gerenciar seu pipeline de vendas.
-            </p>
-          </div>
-          <Button
-            size="sm"
-            className="bg-indigo-600 text-white hover:bg-indigo-500"
-            disabled
-          >
-            <Plus className="mr-1.5 h-4 w-4" />
-            Criar primeiro lead
-          </Button>
-        </div>
-      </div>
+      <LeadForm
+        open={formOpen}
+        onOpenChange={(open) => {
+          setFormOpen(open);
+          if (!open) setEditingLead(null);
+        }}
+        lead={editingLead}
+        onSubmit={handleFormSubmit}
+      />
     </div>
   );
 }
