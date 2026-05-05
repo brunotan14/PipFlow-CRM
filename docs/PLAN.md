@@ -156,13 +156,13 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Objetivo:** CRUD completo de leads com listagem, busca, filtros e página de detalhe.
 
 **Interface primeiro:**
-- [ ] Criar página `/leads` com tabela de leads (nome, empresa, status, responsável, data)
-- [ ] Criar barra de busca e filtros (por status, responsável, data de criação)
-- [ ] Criar modal/drawer "Novo Lead" com formulário completo (nome, e-mail, telefone, empresa, cargo, status)
-- [ ] Criar página `/leads/[id]` com perfil do lead (dados + seção de atividades vazia)
-- [ ] Adicionar menu de ações por lead (editar, excluir, ver detalhe)
-- [ ] Estados vazios (empty state) para listagem sem leads
-- [ ] Paginação ou scroll infinito na listagem
+- [x] Criar página `/leads` com tabela de leads (nome, empresa, status, responsável, data)
+- [x] Criar barra de busca e filtros (por status, responsável, data de criação)
+- [x] Criar modal/drawer "Novo Lead" com formulário completo (nome, e-mail, telefone, empresa, cargo, status)
+- [x] Criar página `/leads/[id]` com perfil do lead (dados + seção de atividades vazia)
+- [x] Adicionar menu de ações por lead (editar, excluir, ver detalhe)
+- [x] Estados vazios (empty state) para listagem sem leads
+- [x] Paginação ou scroll infinito na listagem
 
 **Banco de dados:**
 - [ ] Migration: tabela `leads` com RLS por `workspace_id`
@@ -183,14 +183,14 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Objetivo:** Pipeline visual com drag-and-drop entre etapas e persistência de posição no banco.
 
 **Interface primeiro:**
-- [ ] Criar página `/pipeline` com layout horizontal de colunas Kanban
-- [ ] Criar componente `PipelineColumn` com header (nome da etapa + contador + soma de valor)
-- [ ] Criar componente `DealCard` com título, valor em R$, lead vinculado, avatar do responsável e badge de prazo
-- [ ] Implementar drag-and-drop entre colunas com `@dnd-kit`
-- [ ] Criar modal "Novo Negócio" (título, valor, lead vinculado, responsável, prazo, etapa)
-- [ ] Criar drawer de detalhe do negócio ao clicar no card
-- [ ] Indicador visual de coluna ativa durante drag
-- [ ] Colunas: Novo Lead, Contato Realizado, Proposta Enviada, Negociação, Fechado Ganho, Fechado Perdido
+- [x] Criar página `/pipeline` com layout horizontal de colunas Kanban
+- [x] Criar componente `PipelineColumn` com header (nome da etapa + contador + soma de valor)
+- [x] Criar componente `DealCard` com título, valor em R$, lead vinculado, avatar do responsável e badge de prazo
+- [x] Implementar drag-and-drop entre colunas com `@dnd-kit`
+- [x] Criar modal "Novo Negócio" (título, valor, lead vinculado, responsável, prazo, etapa)
+- [x] Criar drawer de detalhe do negócio ao clicar no card
+- [x] Indicador visual de coluna ativa durante drag
+- [x] Colunas: Novo Lead, Contato Realizado, Proposta Enviada, Negociação, Fechado Ganho, Fechado Perdido
 
 **Banco de dados:**
 - [ ] Migration: tabela `deals` com RLS por `workspace_id`
@@ -235,13 +235,13 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Objetivo:** Dashboard com KPIs de vendas, gráfico de funil e negócios com prazo próximo.
 
 **Interface primeiro:**
-- [ ] Criar página `/dashboard` com grid de cards de métricas
-- [ ] Card: Total de Leads (número + variação)
-- [ ] Card: Negócios Abertos (número + valor somado)
-- [ ] Card: Valor Total do Pipeline (R$ formatado)
-- [ ] Card: Taxa de Conversão (% Fechado Ganho / total)
-- [ ] Criar componente `FunnelChart` com Recharts (barras por etapa)
-- [ ] Seção "Negócios com prazo próximo" (lista dos 5 mais urgentes do usuário logado)
+- [x] Criar página `/dashboard` com grid de cards de métricas
+- [x] Card: Total de Leads (número + variação)
+- [x] Card: Negócios Abertos (número + valor somado)
+- [x] Card: Valor Total do Pipeline (R$ formatado)
+- [x] Card: Taxa de Conversão (% Fechado Ganho / total)
+- [x] Criar componente `FunnelChart` com Recharts (barras por etapa)
+- [x] Seção "Negócios com prazo próximo" (lista dos 5 mais urgentes do usuário logado)
 - [ ] Skeleton loading para todos os cards
 
 **Backend:**
@@ -285,16 +285,17 @@ Adicionar `class="dark"` no `<html>` por padrão — dark é o tema principal, n
 **Branch:** `feat/landing-page`
 **Objetivo:** Página pública de apresentação do PipeFlow CRM otimizada para conversão.
 
-- [ ] Criar `app/page.tsx` como landing page pública
-- [ ] Seção Hero: headline, subtítulo, CTA "Começar grátis" e screenshot do pipeline
-- [ ] Seção Funcionalidades: grid com ícones e descrições dos 6 principais recursos
-- [ ] Seção Pipeline: GIF ou imagem animada do Kanban em uso
-- [ ] Seção Planos: tabela comparativa Free vs Pro com botões de CTA
-- [ ] Seção Depoimentos (placeholder com dados fictícios)
-- [ ] Footer com links (Termos, Privacidade, Contato)
-- [ ] Navbar com logo + botões "Entrar" e "Começar grátis"
-- [ ] Responsiva para mobile e tablet
-- [ ] Metatags e Open Graph para SEO básico
+- [x] Criar `app/page.tsx` como landing page pública
+- [x] Seção Hero: headline, subtítulo, CTA "Começar grátis" e screenshot do pipeline
+- [x] Seção Funcionalidades: grid com ícones e descrições dos 6 principais recursos
+- [x] Seção Planos: tabela comparativa Free vs Pro com botões de CTA
+- [x] Seção Stats: 4 números de resultado (conversão, leads, ciclo, times ativos)
+- [x] Seção CTA final com botão para registro
+- [x] Footer com links (Termos, Privacidade, Contato)
+- [x] Navbar com logo + botões "Entrar" e "Começar grátis"
+- [x] Responsiva para mobile e tablet
+- [x] Metatags e Open Graph para SEO básico
+- [x] Animações com respeito a `prefers-reduced-motion`
 
 **Commit final:** `feat: public landing page with hero, features, pricing and footer`
 
