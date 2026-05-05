@@ -3,8 +3,27 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "PipeFlow CRM",
-  description: "Gestão de clientes e vendas para pequenas e médias empresas",
+  title: {
+    default: "PipeFlow CRM — Pipeline de Vendas para Times Modernos",
+    template: "%s | PipeFlow CRM",
+  },
+  description:
+    "Pipeline Kanban visual, gestão de leads e métricas em tempo real. Feche mais negócios sem planilha. Grátis para começar.",
+  keywords: ["CRM", "pipeline de vendas", "gestão de leads", "kanban", "vendas", "CRM brasileiro"],
+  authors: [{ name: "PipeFlow" }],
+  openGraph: {
+    title: "PipeFlow CRM — Pipeline de Vendas para Times Modernos",
+    description:
+      "Pipeline Kanban visual, gestão de leads e métricas em tempo real. Feche mais negócios sem planilha.",
+    type: "website",
+    locale: "pt_BR",
+    siteName: "PipeFlow CRM",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PipeFlow CRM",
+    description: "Pipeline de vendas visual para times modernos.",
+  },
 };
 
 export default function RootLayout({
